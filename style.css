@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: radial-gradient(circle, #0a1a2f, #000);
+  font-family: Arial, sans-serif;
+  color: #9fe7ff;
+  overflow: hidden;
+
+  --speed: 1;
+  --glow: #00ccff;
+}
+
+/* HYPER MODE */
+body[data-mode="hyper"] {
+  --speed: 2.5;
+  --glow: #ff0033;
+  background: radial-gradient(circle, #240000, #000);
+}
+
+/* MENU */
+.hamburger {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 26px;
+  z-index: 1000;
+}
+
+.menu {
+  position: fixed;
+  left: -260px;
+  top: 0;
+  width: 260px;
+  height: 100%;
+  background: #020c16;
+  padding: 20px;
+  transition: 0.4s;
+  z-index: 999;
+}
+.menu.open { left: 0; }
+
+.menu button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  background: transparent;
+  color: var(--glow);
+  border: 1px solid var(--glow);
+}
+
+/* HUD */
+.hud {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* GRID */
+.hud-grid {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridDrift 30s linear infinite;
+}
+
+/* RINGS */
+.rings {
+  position: relative;
+  width: 320px;
+  height: 320px;
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.2);
+  animation: spin calc(20s / var(--speed)) linear infinite;
+}
+
+.r2 { inset: 15px }
+.r3 { inset: 30px }
+.r4 { inset: 45px }
+.r5 { inset: 60px }
+.r6 { inset: 75px }
+
+/* CORE */
+.core {
+  position: absolute;
+  inset: 100px;
+  border-radius: 50%;
+  background: #020c16;
+  animation: coreBreath calc(3s / var(--speed)) infinite;
+}
+
+.core-inner {
+  width: 60%;
+  height: 60%;
+  margin: 20%;
+  border-radius: 50%;
+  background: var(--glow);
+  animation: innerPulse calc(1.4s / var(--speed)) infinite;
+}
+
+.core-glow {
+  position: absolute;
+  inset: -15px;
+  border-radius: 50%;
+  box-shadow: 0 0 70px var(--glow);
+}
+
+.core-halo {
+  position: absolute;
+  inset: -25px;
+  border-radius: 50%;
+  border: 2px solid var(--glow);
+  animation: haloWave calc(4s / var(--speed)) infinite;
+}
+
+/* RADAR */
+.radar {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(transparent, rgba(255,255,255,.2));
+  animation: radarSpin calc(4s / var(--speed)) linear infinite;
+}
+
+/* WAVEFORM */
+.waveform {
+  position: absolute;
+  bottom: -60px;
+  display: flex;
+  gap: 6px;
+}
+.waveform span {
+  width: 6px;
+  height: 18px;
+  background: var(--glow);
+  animation: wave 0.8s infinite ease-in-out;
+}
+
+/* STATUS (FIXED – NO SHAKE) */
+.status {
+  position: fixed;
+  bottom: 18px;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+/* KEYFRAMES */
+@keyframes spin { to { transform: rotate(360deg) } }
+@keyframes coreBreath { 50% { transform: scale(1.1) } }
+@keyframes innerPulse { 50% { box-shadow: 0 0 30px var(--glow) } }
+@keyframes haloWave { 50% { transform: scale(1.3); opacity: .4 } }
+@keyframes radarSpin { to { transform: rotate(360deg) } }
+@keyframes wave { 50% { height: 45px } }
+@keyframes gridDrift { to { background-position: 200px 200px } }

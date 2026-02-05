@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JARVIS</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body data-mode="normal">
+
+<!-- HAMBURGER -->
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+
+<!-- SIDE MENU -->
+<div id="menu" class="menu">
+  <h2>JARVIS</h2>
+  <button onclick="setMode('normal')">Normal Mode</button>
+  <button onclick="setMode('hyper')">Hyper Mode</button>
+  <button onclick="playIntro()">Play Intro</button>
+</div>
+
+<!-- HUD -->
+<div class="hud">
+  <div class="hud-grid"></div>
+
+  <div class="rings">
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <div class="ring r3"></div>
+    <div class="ring r4"></div>
+    <div class="ring r5"></div>
+    <div class="ring r6"></div>
+
+    <div class="core">
+      <div class="core-glow"></div>
+      <div class="core-halo"></div>
+      <div class="core-inner"></div>
+    </div>
+
+    <div class="radar"></div>
+    <div class="radar radar-b"></div>
+  </div>
+
+  <!-- WAVEFORM -->
+  <div class="waveform" id="waveform">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+</div>
+
+<!-- STATUS (LOCKED POSITION) -->
+<div class="status" id="statusText">
+  JARVIS — NORMAL MODE ACTIVE
+</div>
+
+<audio id="introAudio" src="jarvis.mp3"></audio>
+<audio id="hyperAudio" src="jarvis_advance_sound.mp3"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
